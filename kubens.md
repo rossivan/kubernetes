@@ -1,0 +1,2 @@
+#
+$ kubens ${NAMESPACE}

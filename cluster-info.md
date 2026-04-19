@@ -1,0 +1,11 @@
+$ kubectl cluster-info --context kind-kind
+Kubernetes control plane is running at https://127.0.0.1:38695
+CoreDNS is running at https://127.0.0.1:38695/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+
+# to further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+$ kubectl cluster-info dump
+
+
