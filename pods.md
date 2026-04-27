@@ -127,3 +127,7 @@ pod "nginx-minimal-t2h5m" deleted
 
 
 $ watch "kubectl get pods"
+
+
+# the pod can’t download its container image, so it never even gets to start
+$ kubectl describe pod postgresql-0
