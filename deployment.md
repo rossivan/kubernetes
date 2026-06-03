@@ -22,12 +22,17 @@ spec:
 $ kubectl apply -f Deployment.nginx-minimal.yaml
 
 
+# get deployments in the current namespace
 $ kubectl get deployments
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-minimal   3/3     3            3           20s
 
 
-$ k get replicasets
+# get deployments for a given namespace
+$ kubectl get deployments --namespace <namespace>
+
+
+$ kubectl get replicasets
 NAME                       DESIRED   CURRENT   READY   AGE
 nginx-minimal-6666ccb9cc   3         3         3       57s
 

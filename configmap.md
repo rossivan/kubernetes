@@ -31,6 +31,7 @@ data:
 $ kubectl apply -f ConfigMap.property-like-keys.yaml
 
 
+# get config map in the current namespace
 $ kubectl get cm
 NAME                 DATA   AGE
 file-like-keys       1      23s
@@ -38,7 +39,12 @@ kube-root-ca.crt     1      6m59s
 property-like-keys   3      14s
 
 
-$ k describe cm file-like-keys
+# get config maps for a given namespace
+$ kubectl get cm --namespace <namespace>
+
+
+# describer config map in the current namespace
+$ kubectl describe cm file-like-keys
 Name:         file-like-keys
 Namespace:    04--configmap
 Labels:       <none>
@@ -59,7 +65,7 @@ BinaryData
 Events:  <none>
 
 
-$ k describe cm property-like-keys
+$ kubectl describe cm property-like-keys
 Name:         property-like-keys
 Namespace:    04--configmap
 Labels:       <none>
@@ -83,6 +89,10 @@ BinaryData
 Events:  <none>
 
 
+# describer a specific config map for a given namespace
+$ kubectl describe cm property-like-keys --namespace <namespace>
+
+
 Pod.configmap-example.yaml
 ==========================
 apiVersion: v1
@@ -103,7 +113,6 @@ spec:
     - name: configmap-file-like-keys
       configMap:
         name: file-like-keys
-
 
 $ kubectl apply -f Pod.configmap-example.yaml
 

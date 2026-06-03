@@ -20,7 +20,11 @@ kube-system          kube-scheduler-kind-control-plane            1/1     Runnin
 local-path-storage   local-path-provisioner-988d74bc-lgsln        1/1     Running   9 (65m ago)    362d
 
 
-#
+# get pods for a specific namespace
+$ kubectl get pods --namespace <namespace>
+
+
+# filter out pods for a specific label
 $ kubectl get pods -l key=<value>
 
 
@@ -131,3 +135,28 @@ $ watch "kubectl get pods"
 
 # the pod can’t download its container image, so it never even gets to start
 $ kubectl describe pod postgresql-0
+
+
+# get logs for a pod
+$ kubectl logs <pod-name> --namespace <namespace>
+
+
+# streams logs for pod
+$ kubectl logs -f <pod-name> --namespace <namespace>
+
+
+# get logs from a previous container (after restart) for pod
+$ kubectl logs <pod-name> --namespace <namespace> --previous
+
+
+# get recnt logs for pod
+$ kubectl logs --tail=100 <pod-name> --namespace <namespace>
+
+
+# get pods for a given namespace and show labels associated with them
+$ kubectl get pods -namespace <namespace> --show-labels
+
+
+# once you have the labels
+$ kubectl logs --namespace <namespace> --label <label-from-show-labels> --all-containers=true --since=8h \
+    | grep -Ei 'error|exception|fail|panic'
